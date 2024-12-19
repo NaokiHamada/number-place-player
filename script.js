@@ -4,6 +4,8 @@ var table;
 // game number
 var gameId = 0;
 
+var puzzleName = "";
+
 // puzzle grid
 var puzzle = [];
 
@@ -23,9 +25,102 @@ var pauseTimer = false;
 var intervalId;
 var gameOn = false;
 
-function newGame(difficulty) {
+// grid[match][player]
+var gridInit = {
+	"single-objective-1": {
+		"Ayato2003": [
+			"100000000",
+			"020000000",
+			"003000000",
+			"000400000",
+			"000050000",
+			"000006000",
+			"000000700",
+			"000000080",
+			"000000009",
+		],
+		"kushida": [
+			"900000000",
+			"080000000",
+			"007000000",
+			"000600000",
+			"000050000",
+			"000004000",
+			"000000300",
+			"000000020",
+			"000000001",
+		],
+	},
+	"single-objective-2": {
+		"Ayato2003": [
+			"100000000",
+			"020000000",
+			"003000000",
+			"000400000",
+			"000050000",
+			"000006000",
+			"000000700",
+			"000000080",
+			"000000009",
+		],
+	},
+	"single-objective-3": {
+		"Ayato2003": [
+			"100000000",
+			"020000000",
+			"003000000",
+			"000400000",
+			"000050000",
+			"000006000",
+			"000000700",
+			"000000080",
+			"000000009",
+		],
+	},
+	"multi-objective-1": {
+		"Ayato2003": [
+			"100000000",
+			"020000000",
+			"003000000",
+			"000400000",
+			"000050000",
+			"000006000",
+			"000000700",
+			"000000080",
+			"000000009",
+		],
+	},
+	"multi-objective-2": {
+		"Ayato2003": [
+			"100000000",
+			"020000000",
+			"003000000",
+			"000400000",
+			"000050000",
+			"000006000",
+			"000000700",
+			"000000080",
+			"000000009",
+		],
+	},
+	"multi-objective-3": {
+		"Ayato2003": [
+			"100000000",
+			"020000000",
+			"003000000",
+			"000400000",
+			"000050000",
+			"000006000",
+			"000000700",
+			"000000080",
+			"000000009",
+		],
+	},
+};
+
+function newGame(match, user) {
 	// get random position for numbers from '1' to '9' to generate a random puzzle
-	var grid = getGridInit();
+	var grid = getGridInitOf(match, user);
 
 	// prepare rows, columns and blocks to solove the initioaled grid
 	var rows = grid;
@@ -43,17 +138,8 @@ function newGame(difficulty) {
 	timer = 0;
 	for (var i in remaining) remaining[i] = 9;
 
-	// empty cells from grid depend on difficulty
-	// for now it will be:
-	// 59 empty cells for very easy
-	// 64 empty cells for easy
-	// 69 empty cells for normal
-	// 74 empty cells for hard
-	// 79 empty cells for expert
-	puzzle = makeItPuzzle(solution, difficulty);
-
-	// game is on when the difficulty = [0, 4]
-	gameOn = difficulty < 5 && difficulty >= 0;
+	puzzle = grid;
+	gameOn = true;
 
 	// update the UI
 	ViewPuzzle(puzzle);
@@ -61,6 +147,15 @@ function newGame(difficulty) {
 
 	// finally, start the timer
 	if (gameOn) startTimer();
+}
+
+function getGridInitOf(match, user) {
+	return gridInit[match][user];
+}
+
+function getRandomPropertyName(obj) {
+	var keys = Object.keys(obj);
+	return keys[keys.length * Math.random() << 0];
 }
 
 function getGridInit() {
@@ -233,52 +328,6 @@ function generatePossibleRows(possibleNumber) {
 	step(0, "");
 
 	return result;
-}
-
-// empty cell from grid depends on the difficulty to make the puzzle
-function makeItPuzzle(grid, difficulty) {
-	/*
-		  difficulty:
-		  // expert   : 0;
-		  // hard     : 1;
-		  // Normal   : 2;
-		  // easy     : 3;
-		  // very easy: 4;
-	  */
-
-	// empty_cell_count = 5 * difficulty + 20
-	// when difficulty = 13, empty_cell_count = 85 > (81 total cells count)
-	// so the puzzle is showen as solved grid
-	if (!(difficulty < 5 && difficulty > -1)) difficulty = 13;
-	var remainedValues = 81;
-	var puzzle = grid.slice(0);
-
-	// function to remove value from a cell and its symmetry then return remained values
-	function clearValue(grid, x, y, remainedValues) {
-		function getSymmetry(x, y) {
-			var symX = 8 - x; //Symmetry
-			var symY = 8 - y;
-			return [symX, symY];
-		}
-		var sym = getSymmetry(x, y);
-		if (grid[y][x] != 0) {
-			grid[y] = replaceCharAt(grid[y], x, "0");
-			remainedValues--;
-			if (x != sym[0] && y != sym[1]) {
-				grid[sym[1]] = replaceCharAt(grid[sym[1]], sym[0], "0");
-				remainedValues--;
-			}
-		}
-		return remainedValues;
-	}
-
-	// remove value from a cell and its symmetry to reach the expected empty cells amount
-	while (remainedValues > difficulty * 5 + 20) {
-		var x = Math.floor(Math.random() * 9);
-		var y = Math.floor(Math.random() * 9);
-		remainedValues = clearValue(puzzle, x, y, remainedValues);
-	}
-	return puzzle;
 }
 
 // view grid in html page
@@ -580,13 +629,6 @@ function HamburgerButtonClick() {
 // start new game
 function startGameButtonClick() {
 	var difficulties = document.getElementsByName("difficulty");
-	// difficulty:
-	//  0 expert
-	//  1 hard
-	//  2 normal
-	//  3 easy
-	//  4 very easy
-	//  5 solved
 
 	// initial difficulty to 5 (solved)
 	var difficulty = 5;
@@ -594,12 +636,15 @@ function startGameButtonClick() {
 	// get difficulty value
 	for (var i = 0; i < difficulties.length; i++) {
 		if (difficulties[i].checked) {
-			newGame(4 - i);
+			var d = eval("(" + difficulties[i].value + ")")
+			if (!d.match) d.match = getRandomPropertyName(gridInit);
+			if (!d.user) d.user = getRandomPropertyName(gridInit[d.match]);
+			puzzleName = d.match + ", " + d.user
+			newGame(d.match, d.user);
 			difficulty = i;
 			break;
 		}
 	}
-	if (difficulty > 4) newGame(5);
 
 	hideDialogButtonClick("dialog");
 	gameId++;
@@ -617,11 +662,11 @@ function startGameButtonClick() {
 	document.getElementById("timer-label").innerText = "Time";
 	document.getElementById("timer").innerText = "00:00";
 	document.getElementById("game-difficulty-label").innerText =
-		"Game difficulty";
+		"Game";
 
 	document.getElementById("game-difficulty").innerText =
 		difficulty < difficulties.length
-			? difficulties[difficulty].value
+			? puzzleName
 			: "solved";
 }
 
