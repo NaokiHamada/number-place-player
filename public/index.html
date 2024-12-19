@@ -1,6 +1,6 @@
 <!--
 
-Copyright (c) 2018 - Mohammad Diab - https://codepen.io/MohammadDiab/pen/JLMvEY
+Copyright (c) 2014 - CRISTIAN CANEA - https://codepen.io/cristiancanea/pen/nJzmPd
 
 Permission is hereby granted, free of charge, to any person 
 obtaining a copy of this software and associated documentation 
@@ -28,1117 +28,122 @@ DEALINGS IN THE SOFTWARE.
 
 <head>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width" />
 	<link rel="stylesheet" href="style.css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<title>Number Place</title>
 </head>
 
 <body>
-	<nav class="app-bar">
-		<button onclick="HamburgerButtonClick();" class="button bar-button hamburger-button">
-			<span class="material-icons">menu</span>
-		</button>
-		<div class="bar-font title">Sudoku</div>
-		<div id="moreoption-sec" class="more-option-div more-button">
-			<button onclick="moreOptionButtonClick()" class="button bar-button">
-				<span class="material-icons">more_vert</span>
-			</button>
-			<!-- it is important to put these styles in here because if I do not do that it will not work in javaScript-->
-			<div id="more-option-list" style="visibility: hidden;max-height: 10px;max-width: 40px;min-width: 40px;"
-				class="more-option-list">
-				<button onclick="hintButtonClick()" ripple-color="#003c8f"
-					class="button nav-item vertical-adjust">Hint</button>
-				<button onclick="restartButtonClick()" ripple-color="#003c8f"
-					class="button nav-item vertical-adjust">Restart</button>
-				<button onclick="SurrenderButtonClick()" ripple-color="tomato"
-					class="button nav-item vertical-adjust">Surrender</button>
-			</div>
-		</div>
+	<a href="#" id="sidebar-toggle">
+		<span class="bar"></span>
+		<span class="bar"></span>
+		<span class="bar"></span>
+	</a>
 
-		<button id="pause-btn" onclick="pauseGameButtonClick()" class="button bar-button more-button">
-			<span id="pause-icon" class="material-icons">pause</span>
-			<span id="pause-text">Pause</span>
-		</button>
-		<button id="check-btn" onclick="checkButtonClick()" class="button bar-button more-button">
-			<span class="material-icons">done_all</span>
-			<span>Check</span>
-		</button>
-		<button id="isunique-btn" style="display: none;" onclick="isUniqueButtonClick();"
-			class="button bar-button more-button">
-			<span class="material-icons">call_split</span>
-			<span>Is unique</span>
-		</button>
-		<button id="solve-btn" style="display: none;" onclick="solveButtonClick()"
-			class="button bar-button more-button">
-			<span class="material-icons">border_color</span>
-			<span>Solve</span>
-		</button>
+	<h1 id="sudoku_title">Number Place</h1>
 
-	</nav>
-
-	<div id="hamburger-menu" class="hamburger-menu">
-		<nav id="nav-menu" class="nav-menu">
-			<div class="nav-head">
-				<div class="nav-head-img">
-					<img src="https://image.ibb.co/jmuOKn/icon.jpg" art="" />
-				</div>
-				<div class="nav-head-title">Sudoku</div>
-			</div>
-			<ul class="nav-items">
-				<button onclick="showDialogClick('dialog');" ripple-color="#003c8f"
-					class="button nav-item vertical-adjust">
-					<div>
-						<span class="material-icons">add</span>
-						<span style="left:12px;">New game</span>
-					</div>
-				</button>
-				<button onclick="sudokuSolverMenuClick();" ripple-color="#003c8f"
-					class="button nav-item vertical-adjust">
-					<div>
-						<span class="material-icons">edit</span>
-						<span style="left:12px;">Sudoku Solver</span>
-					</div>
-				</button>
-				<button onclick="showDialogClick('about-dialog');" ripple-color="#003c8f"
-					class="button nav-item vertical-adjust">
-					<div>
-						<span class="material-icons">star</span>
-						<span style="left:12px;">About</span>
-					</div>
-				</button>
-				<div class="bar-footer">
-					<ul>
-						<a href="#" class="bar-footer-link">Site feedback</a>
-						<a href="#" class="bar-footer-link">Privacy</a>
-						<a href="#" class="bar-footer-link">Terms</a>
+	<div id="sudoku_menu">
+		<h2>Select puzzle</h2>
+		<ul>
+			<li><a class="restart" href="#" onClick="onClickRandom();">From all matches</a></li>
+			<ul id="all-matches">
+				<li>
+					<a class="restart" href="#" onClick="onClickRandom('single-objective-1');">From single-objective-1</a>
+					<ul id="single-objective-1">
+						<li><a class="restart" href="?m=single-objective-1&u=Ayato2003&p=700000009003902400090030010040000070002000600010000080030050090005409300800000006">Ayato2003</a></li>
+						<li><a class="restart" href="?m=single-objective-1&u=hoge&p=700000005004507300090080020050000060006000100070000080040050090007402600800000004">hoge</a></li>
+						<li><a class="restart" href="?m=single-objective-1&u=kushida&p=400000005005103200070080060090000050006000700020000010040070080002608500300000001">kushida</a></li>
+						<li><a class="restart" href="?m=single-objective-1&u=penguin&p=400000006009304100050080030040000060001000400070000020080020070004609800300000002">penguin</a></li>
+						<li><a class="restart" href="?m=single-objective-1&u=satori&p=300000008008602700020080040040000090003000500010000030090010060002703900100000005">satori</a></li>
+						<li><a class="restart" href="?m=single-objective-1&u=SoraY677&p=800000009001805700070030040010000090004000100030000020080020030009706200400000006">SoraY677</a></li>
+						<li><a class="restart" href="?m=single-objective-1&u=t-um&p=100000002003401500060070080080000030005000600040000010020010070006504900400000008">t-um</a></li>
+						<li><a class="restart" href="?m=single-objective-1&u=XUYuefeng&p=400000001008305900030070020050000040004000600020000050070080090003706400500000002">XUYuefeng</a></li>
+						<li><a class="restart" href="?m=single-objective-1&u=yukichi&p=500000001003401700010080090030000070006000400040000050050060010008709300200000006">yukichi</a></li>
+						<li><a class="restart" href="?m=single-objective-1&u=yukihanawa&p=400000008001403500070050040030000050002000600060000010040070060007908100300000002">yukihanawa</a></li>
+						<li><a class="restart" href="?m=single-objective-1&u=YutaNakanishi&p=700000001008604300050070080090000020002000400060000050070060030003402100200000009">YutaNakanishi</a></li>
 					</ul>
-				</div>
-			</ul>
-		</nav>
-		<div class="nav-menu-blank" onclick="hideHamburgerClick()">
-
-		</div>
-	</div>
-
-	<div class="floating">
-		<button onclick="showDialogClick('dialog');" class="button floating-btn vertical-adjust">
-			<span class="material-icons">add</span>
-		</button>
-	</div>
-
-	<div id="dialog" class="dialog">
-		<div id="dialog-box" class="dialog-content">
-			<div class="dialog-header">New game</div>
-
-			<div class="dialog-body">
-				<p>Select puzzle to play.</p>
-				<ul>
-					<li class="radio-option">
-						<label>
-							<input id="all-matches" value="{match:null, user:null}" type="radio" name="difficulty"> Random from all matches
-						</label>
-					</li>
-
-					<li class="radio-option">
-						<label>
-							<input id="single-objective-1" value="{match:'single-objective-1', user:null}" type="radio"
-								name="difficulty"> Random from single-objective-1
-						</label>
-						<ul>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-1_Ayato2003"
-										value="{match:'single-objective-1', user:'Ayato2003'}" type="radio"
-										name="difficulty">
-									Ayato2003
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-1_hoge"
-										value="{match:'single-objective-1', user:'hoge'}" type="radio"
-										name="difficulty">
-									hoge
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-1_kushida"
-										value="{match:'single-objective-1', user:'kushida'}" type="radio"
-										name="difficulty">
-									kushida
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-1_penguin"
-										value="{match:'single-objective-1', user:'penguin'}" type="radio"
-										name="difficulty">
-									penguin
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-1_satori"
-										value="{match:'single-objective-1', user:'satori'}" type="radio"
-										name="difficulty">
-									satori
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-1_SoraY677"
-										value="{match:'single-objective-1', user:'SoraY677'}" type="radio"
-										name="difficulty">
-									SoraY677
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-1_t-um"
-										value="{match:'single-objective-1', user:'t-um'}" type="radio"
-										name="difficulty">
-									t-um
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-1_XUYuefeng"
-										value="{match:'single-objective-1', user:'XUYuefeng'}" type="radio"
-										name="difficulty">
-									XUYuefeng
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-1_yukichi"
-										value="{match:'single-objective-1', user:'yukichi'}" type="radio"
-										name="difficulty">
-									yukichi
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-1_yukihanawa"
-										value="{match:'single-objective-1', user:'yukihanawa'}" type="radio"
-										name="difficulty">
-									yukihanawa
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-1_YutaNakanishi"
-										value="{match:'single-objective-1', user:'YutaNakanishi'}" type="radio"
-										name="difficulty">
-									YutaNakanishi
-								</label>
-							</li>
-						</ul>
-					</li>
-
-					<li class="radio-option">
-						<label>
-							<input id="single-objective-2" value="{match:'single-objective-2', user:null}" type="radio"
-								name="difficulty"> Random from single-objective-2
-						</label>
-						<ul>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-2_Ayato2003"
-										value="{match:'single-objective-2', user:'Ayato2003'}" type="radio"
-										name="difficulty">
-									Ayato2003
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-2_hoge"
-										value="{match:'single-objective-2', user:'hoge'}" type="radio"
-										name="difficulty">
-									hoge
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-2_kushida"
-										value="{match:'single-objective-2', user:'kushida'}" type="radio"
-										name="difficulty">
-									kushida
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-2_penguin"
-										value="{match:'single-objective-2', user:'penguin'}" type="radio"
-										name="difficulty">
-									penguin
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-2_satori"
-										value="{match:'single-objective-2', user:'satori'}" type="radio"
-										name="difficulty">
-									satori
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-2_SoraY677"
-										value="{match:'single-objective-2', user:'SoraY677'}" type="radio"
-										name="difficulty">
-									SoraY677
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-2_t-um"
-										value="{match:'single-objective-2', user:'t-um'}" type="radio"
-										name="difficulty">
-									t-um
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-2_XUYuefeng"
-										value="{match:'single-objective-2', user:'XUYuefeng'}" type="radio"
-										name="difficulty">
-									XUYuefeng
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-2_yukichi"
-										value="{match:'single-objective-2', user:'yukichi'}" type="radio"
-										name="difficulty">
-									yukichi
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-2_yukihanawa"
-										value="{match:'single-objective-2', user:'yukihanawa'}" type="radio"
-										name="difficulty">
-									yukihanawa
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-2_YutaNakanishi"
-										value="{match:'single-objective-2', user:'YutaNakanishi'}" type="radio"
-										name="difficulty">
-									YutaNakanishi
-								</label>
-							</li>
-						</ul>
-					</li>
-
-					<li class="radio-option">
-						<label>
-							<input id="single-objective-3" value="{match:'single-objective-3', user:null}" type="radio"
-								name="difficulty"> Random from single-objective-3
-						</label>
-						<ul>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-3_Ayato2003"
-										value="{match:'single-objective-3', user:'Ayato2003'}" type="radio"
-										name="difficulty">
-									Ayato2003
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-3_hoge"
-										value="{match:'single-objective-3', user:'hoge'}" type="radio"
-										name="difficulty">
-									hoge
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-3_kushida"
-										value="{match:'single-objective-3', user:'kushida'}" type="radio"
-										name="difficulty">
-									kushida
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-3_penguin"
-										value="{match:'single-objective-3', user:'penguin'}" type="radio"
-										name="difficulty">
-									penguin
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-3_satori"
-										value="{match:'single-objective-3', user:'satori'}" type="radio"
-										name="difficulty">
-									satori
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-3_SoraY677"
-										value="{match:'single-objective-3', user:'SoraY677'}" type="radio"
-										name="difficulty">
-									SoraY677
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-3_t-um"
-										value="{match:'single-objective-3', user:'t-um'}" type="radio"
-										name="difficulty">
-									t-um
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-3_XUYuefeng"
-										value="{match:'single-objective-3', user:'XUYuefeng'}" type="radio"
-										name="difficulty">
-									XUYuefeng
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-3_yukichi"
-										value="{match:'single-objective-3', user:'yukichi'}" type="radio"
-										name="difficulty">
-									yukichi
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-3_yukihanawa"
-										value="{match:'single-objective-3', user:'yukihanawa'}" type="radio"
-										name="difficulty">
-									yukihanawa
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="single-objective-3_YutaNakanishi"
-										value="{match:'single-objective-3', user:'YutaNakanishi'}" type="radio"
-										name="difficulty">
-									YutaNakanishi
-								</label>
-							</li>
-						</ul>
-					</li>
-
-					<li class="radio-option">
-						<label>
-							<input id="multi-objective-1" value="{match:'multi-objective-1', user:null}" type="radio"
-								name="difficulty"> Random from multi-objective-1
-						</label>
-						<ul>
-							<li class="radio-option">
-								<label>
-									<input id="multi-objective-1_Ayato2003"
-										value="{match:'multi-objective-1', user:'Ayato2003'}" type="radio"
-										name="difficulty">
-									Ayato2003
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="multi-objective-1_hoge"
-										value="{match:'multi-objective-1', user:'hoge'}" type="radio"
-										name="difficulty">
-									hoge
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="multi-objective-1_penguin"
-										value="{match:'multi-objective-1', user:'penguin'}" type="radio"
-										name="difficulty">
-									penguin
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="multi-objective-1_satori"
-										value="{match:'multi-objective-1', user:'satori'}" type="radio"
-										name="difficulty">
-									satori
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="multi-objective-1_SoraY677"
-										value="{match:'multi-objective-1', user:'SoraY677'}" type="radio"
-										name="difficulty">
-									SoraY677
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="multi-objective-1_t-um"
-										value="{match:'multi-objective-1', user:'t-um'}" type="radio"
-										name="difficulty">
-									t-um
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="multi-objective-1_XUYuefeng"
-										value="{match:'multi-objective-1', user:'XUYuefeng'}" type="radio"
-										name="difficulty">
-									XUYuefeng
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="multi-objective-1_yukihanawa"
-										value="{match:'multi-objective-1', user:'yukihanawa'}" type="radio"
-										name="difficulty">
-									yukihanawa
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="multi-objective-1_YutaNakanishi"
-										value="{match:'multi-objective-1', user:'YutaNakanishi'}" type="radio"
-										name="difficulty">
-									YutaNakanishi
-								</label>
-							</li>
-						</ul>
-					</li>
-
-					<li class="radio-option">
-						<label>
-							<input id="multi-objective-2" value="{match:'multi-objective-2', user:null}" type="radio"
-								name="difficulty"> Random from multi-objective-2
-						</label>
-						<ul>
-							<li class="radio-option">
-								<label>
-									<input id="multi-objective-2_Ayato2003"
-										value="{match:'multi-objective-2', user:'Ayato2003'}" type="radio"
-										name="difficulty">
-									Ayato2003
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="multi-objective-2_hoge"
-										value="{match:'multi-objective-2', user:'hoge'}" type="radio"
-										name="difficulty">
-									hoge
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="multi-objective-2_penguin"
-										value="{match:'multi-objective-2', user:'penguin'}" type="radio"
-										name="difficulty">
-									penguin
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="multi-objective-2_satori"
-										value="{match:'multi-objective-2', user:'satori'}" type="radio"
-										name="difficulty">
-									satori
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="multi-objective-2_SoraY677"
-										value="{match:'multi-objective-2', user:'SoraY677'}" type="radio"
-										name="difficulty">
-									SoraY677
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="multi-objective-2_t-um"
-										value="{match:'multi-objective-2', user:'t-um'}" type="radio"
-										name="difficulty">
-									t-um
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="multi-objective-2_XUYuefeng"
-										value="{match:'multi-objective-2', user:'XUYuefeng'}" type="radio"
-										name="difficulty">
-									XUYuefeng
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="multi-objective-2_yukihanawa"
-										value="{match:'multi-objective-2', user:'yukihanawa'}" type="radio"
-										name="difficulty">
-									yukihanawa
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="multi-objective-2_YutaNakanishi"
-										value="{match:'multi-objective-2', user:'YutaNakanishi'}" type="radio"
-										name="difficulty">
-									YutaNakanishi
-								</label>
-							</li>
-						</ul>
-					</li>
-
-					<li class="radio-option">
-						<label>
-							<input id="multi-objective-3" value="{match:'multi-objective-3', user:null}" type="radio"
-								name="difficulty"> Random from multi-objective-3
-						</label>
-						<ul>
-							<li class="radio-option">
-								<label>
-									<input id="multi-objective-3_Ayato2003"
-										value="{match:'multi-objective-3', user:'Ayato2003'}" type="radio"
-										name="difficulty">
-									Ayato2003
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="multi-objective-3_hoge"
-										value="{match:'multi-objective-3', user:'hoge'}" type="radio"
-										name="difficulty">
-									hoge
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="multi-objective-3_penguin"
-										value="{match:'multi-objective-3', user:'penguin'}" type="radio"
-										name="difficulty">
-									penguin
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="multi-objective-3_satori"
-										value="{match:'multi-objective-3', user:'satori'}" type="radio"
-										name="difficulty">
-									satori
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="multi-objective-3_SoraY677"
-										value="{match:'multi-objective-3', user:'SoraY677'}" type="radio"
-										name="difficulty">
-									SoraY677
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="multi-objective-3_t-um"
-										value="{match:'multi-objective-3', user:'t-um'}" type="radio"
-										name="difficulty">
-									t-um
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="multi-objective-3_XUYuefeng"
-										value="{match:'multi-objective-3', user:'XUYuefeng'}" type="radio"
-										name="difficulty">
-									XUYuefeng
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="multi-objective-3_yukihanawa"
-										value="{match:'multi-objective-3', user:'yukihanawa'}" type="radio"
-										name="difficulty">
-									yukihanawa
-								</label>
-							</li>
-							<li class="radio-option">
-								<label>
-									<input id="multi-objective-3_YutaNakanishi"
-										value="{match:'multi-objective-3', user:'YutaNakanishi'}" type="radio"
-										name="difficulty">
-									YutaNakanishi
-								</label>
-							</li>
-						</ul>
-					</li>
-
-				</ul>
-			</div>
-
-			<div class="dialog-footer">
-				<button onclick="startGameButtonClick();" ripple-color="#003c8f"
-					class="button dialog-btn vertical-adjust">OK</button>
-				<button onclick="hideDialogButtonClick('dialog');" ripple-color="#202020"
-					class="button dialog-btn vertical-adjust">Cancel</button>
-			</div>
-		</div>
-	</div>
-
-	<div id="about-dialog" class="dialog">
-
-		<div id="about-dialog-box" onblur="hideDialogButtonClick('about-dialog');"
-			class="dialog-content about-dialog-content">
-			<div class="dialog-header">CodeTeam6</div>
-
-			<div class="dialog-body">
-				<p>about us</p>
-				<div class="card-group">
-					<div class="card dialog-card">
-						<div class="about-card-img">
-							<img src="https://image.ibb.co/crYHen/a_abdallah.jpg" alt="" />
-						</div>
-						<div class="about-card-title">Ahmad Abdalla</div>
-						<div class="about-card-content">Egypt</div>
-						<div class="about-card-quote">My dream is to be the best developer in the world, and I'll work
-							continuously to achieve that.</div>
-					</div>
-					<div class="card dialog-card">
-						<div class="about-card-img">
-							<img src="https://image.ibb.co/mKg3Kn/a_alrifai.jpg" alt="" />
-						</div>
-						<div class="about-card-title">Ayman Alrifai</div>
-						<div class="about-card-content">Libya</div>
-						<div class="about-card-quote">I love coding & design. I learn every day to build awesome stuff.
-						</div>
-					</div>
-					<div class="card dialog-card">
-						<div class="about-card-img">
-							<img src="https://image.ibb.co/dYd5X7/m_diab.jpg" alt="" />
-						</div>
-						<div class="about-card-title">Mohammad Diab</div>
-						<div class="about-card-content">Syria</div>
-						<div class="about-card-quote">Silent but deadly.</div>
-					</div>
-					<div class="card dialog-card">
-						<div class="about-card-img">
-							<img src="https://image.ibb.co/g01g5S/" alt="" />
-						</div>
-						<div class="about-card-title">RB</div>
-						<div class="about-card-content">Palestine</div>
-						<div class="about-card-quote">I think outside the box, I love trying everything new.</div>
-					</div>
-
-				</div>
-			</div>
-
-			<div class="dialog-footer">
-				<button onclick="hideDialogButtonClick('about-dialog');" ripple-color="#003c8f"
-					class="button dialog-btn vertical-adjust">OK</button>
-			</div>
-		</div>
-	</div>
-
-	<div class="body" id="sudoku">
-		<div class="card game">
-			<table id="puzzle-grid">
-				<tr>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-					<td>
-						<input type="text" maxlength="1" onchange="checkInput(this)" disabled />
-					</td>
-				</tr>
-
-			</table>
-		</div>
-
-		<div class="card status">
-			<div id="game-number">game #0</div>
-			<ul class="game-status">
+				</li>
 				<li>
-					<div class="vertical-adjust">
-						<span class="material-icons">timer</span>
-						<span id="timer-label">Time</span>
-					</div>
-					<div id="timer" class="timer">00:00</div>
+					<a class="restart" href="#" onClick="onClickRandom('single-objective-2');">From single-objective-2</a>
+					<ul id="single-objective-2">
+						<li><a class="restart" href="?m=single-objective-2&u=Ayato2003&p=600000009005102800040090030080000010007000200010000040060030020009608300400000006">Ayato2003</a></li>
+						<li><a class="restart" href="?m=single-objective-2&u=hoge&p=700000005004507300090080020050000060006000100070000080040050090007402600800000004">hoge</a></li>
+						<li><a class="restart" href="?m=single-objective-2&u=kushida&p=600000005009307400050010090020000040004000800030000070010090020005803700700000009">kushida</a></li>
+						<li><a class="restart" href="?m=single-objective-2&u=penguin&p=800000009005406700020080040070000090006000400010000020050020010009603500300000004">penguin</a></li>
+						<li><a class="restart" href="?m=single-objective-2&u=satori&p=200000006007402800010090050050000020006000900040000030030060090002801500100000004">satori</a></li>
+						<li><a class="restart" href="?m=single-objective-2&u=SoraY677&p=600000007002809400050030060060000050008000100070000020020010040005203800900000002">SoraY677</a></li>
+						<li><a class="restart" href="?m=single-objective-2&u=t-um&p=100000002003104500060070080080000010005000800090000030030010070007905400200000009">t-um</a></li>
+						<li><a class="restart" href="?m=single-objective-2&u=XUYuefeng&p=600000003002904100050060080060000040008000200070000050040080090003109600100000004">XUYuefeng</a></li>
+						<li><a class="restart" href="?m=single-objective-2&u=yukichi&p=800000002007408300060070050010000020002000100090000070030060080001209400600000003">yukichi</a></li>
+						<li><a class="restart" href="?m=single-objective-2&u=yukihanawa&p=100000007008503900040020060080000050004000200050000040070030080003209100500000003">yukihanawa</a></li>
+						<li><a class="restart" href="?m=single-objective-2&u=YutaNakanishi&p=300000006008207900090030010040000080005000200010000090060080070002306500400000009">YutaNakanishi</a></li>
+					</ul>
+				</li>
+				<li>
+					<a class="restart" href="#" onClick="onClickRandom('single-objective-3');">From single-objective-3</a>
+					<ul id="single-objective-3">
+						<li><a class="restart" href="?m=single-objective-3&u=Ayato2003&p=000000000005102400070090060080000090001000500060000070030060080008304100000000000">Ayato2003</a></li>
+						<li><a class="restart" href="?m=single-objective-3&u=hoge&p=000000000005703600010060020080000010003000900040000070050010080006509300000000000">hoge</a></li>
+						<li><a class="restart" href="?m=single-objective-3&u=kushida&p=000000000009601700080020030060000040001000500030000080050030020007904100000000000">kushida</a></li>
+						<li><a class="restart" href="?m=single-objective-3&u=penguin&p=000000000004206300080090070070000050005000100060000090090060080003105400000000000">penguin</a></li>
+						<li><a class="restart" href="?m=single-objective-3&u=satori&p=000000000008605300090040010040000070003000500010000030080010040005203600000000000">satori</a></li>
+						<li><a class="restart" href="?m=single-objective-3&u=SoraY677&p=000000000005708100060030020020000070009000800050000060070060030008501400000000000">SoraY677</a></li>
+						<li><a class="restart" href="?m=single-objective-3&u=t-um&p=000000000001203400040050060060000010002000700050000080080060040007304200000000000">t-um</a></li>
+						<li><a class="restart" href="?m=single-objective-3&u=XUYuefeng&p=000000000001609400070020080010000050009000100030000070050070020008104900000000000">XUYuefeng</a></li>
+						<li><a class="restart" href="?m=single-objective-3&u=yukichi&p=000000000004306700070090030010000020007000400080000090090080010005407600000000000">yukichi</a></li>
+						<li><a class="restart" href="?m=single-objective-3&u=yukihanawa&p=000000000001305400080090070090000080004000100020000060010060090007403500000000000">yukihanawa</a></li>
+						<li><a class="restart" href="?m=single-objective-3&u=YutaNakanishi&p=000000000003106700040020090090000020008000100070000050050090070001703600000000000">YutaNakanishi</a></li>
+					</ul>
 				</li>
 
 				<li>
-					<div class="vertical-adjust">
-						<span class="material-icons">network_check</span>
-						<span id="game-difficulty-label">Game</span>
-					</div>
-					<div id="game-difficulty" class="timer">undefined</div>
+					<a class="restart" href="#" onClick="onClickRandom('multi-objective-1');">From multi-objective-1</a>
+					<ul id="multi-objective-1">
+						<li><a class="restart" href="?m=multi-objective-1&u=Ayato2003&p=700000009003902400090030010040000070002000600010000080030050090005409300800000006">Ayato2003</a></li>
+						<li><a class="restart" href="?m=multi-objective-1&u=hoge&p=700000005004507300090080020050000060006000100070000080040050090007402600800000004">hoge</a></li>
+						<li><a class="restart" href="?m=multi-objective-1&u=jpnsec&p=800000009006807400040060020050000030002000700070000080090080060001702500700000003">jpnsec</a></li>
+						<li><a class="restart" href="?m=multi-objective-1&u=penguin&p=800000006009704100010080030040000060006000400050000020080050010007609300300000002">penguin</a></li>
+						<li><a class="restart" href="?m=multi-objective-1&u=satori&p=100000008003507900080020070040000080006000700020000030030090040004201600500000003">satori</a></li>
+						<li><a class="restart" href="?m=multi-objective-1&u=SoraY677&p=900000004002403700010060090090000080005000400020000030080050060009108500700000003">SoraY677</a></li>
+						<li><a class="restart" href="?m=multi-objective-1&u=t-um&p=100000002002304500060070080070000050009000600040000090010050070006409300500000008">t-um</a></li>
+						<li><a class="restart" href="?m=multi-objective-1&u=XUYuefeng&p=500000004008107300010040060060000050003000900050000080080090040007506200200000009">XUYuefeng</a></li>
+						<li><a class="restart" href="?m=multi-objective-1&u=yukihanawa&p=100000002003105600070080090060000010005000800090000070040030050008206400700000009">yukihanawa</a></li>
+						<li><a class="restart" href="?m=multi-objective-1&u=YutaNakanishi&p=400000005009103200030080060060000040001000900070000010090010080007504600300000007">YutaNakanishi</a></li>
+					</ul>
 				</li>
 				<li>
-					<div class="vertical-adjust">
-						<span class="material-icons">grid_on</span>
-						<span>Remaining numbers</span>
-					</div>
-					<div class="remain-table">
-						<div class="remain-column">
-							<div class="remain-cell">
-								<div class="remain-cell-header">1</div>
-								<div onchange="document.write('Hello');" id="remain-1" class="remain-cell-content">0
-								</div>
-							</div>
-							<div class="remain-cell">
-								<div class="remain-cell-header">4</div>
-								<div id="remain-4" class="remain-cell-content">0</div>
-							</div>
-							<div class="remain-cell">
-								<div class="remain-cell-header">7</div>
-								<div id="remain-7" class="remain-cell-content">0</div>
-							</div>
-						</div>
-						<div class="remain-column">
-							<div class="remain-cell">
-								<div class="remain-cell-header">2</div>
-								<div id="remain-2" class="remain-cell-content">0</div>
-							</div>
-							<div class="remain-cell">
-								<div class="remain-cell-header">5</div>
-								<div id="remain-5" class="remain-cell-content">0</div>
-							</div>
-							<div class="remain-cell">
-								<div class="remain-cell-header">8</div>
-								<div id="remain-8" class="remain-cell-content">0</div>
-							</div>
-						</div>
-						<div class="remain-column">
-							<div class="remain-cell">
-								<div class="remain-cell-header">3</div>
-								<div id="remain-3" class="remain-cell-content">0</div>
-							</div>
-							<div class="remain-cell">
-								<div class="remain-cell-header">6</div>
-								<div id="remain-6" class="remain-cell-content">0</div>
-							</div>
-							<div class="remain-cell">
-								<div class="remain-cell-header">9</div>
-								<div id="remain-9" class="remain-cell-content">0</div>
-							</div>
-						</div>
-
-					</div>
+					<a class="restart" href="#" onClick="onClickRandom('multi-objective-2');">From multi-objective-2</a>
+					<ul id="multi-objective-2">
+						<li><a class="restart" href="?m=multi-objective-2&u=Ayato2003&p=100000002003405600070010080080000030006000900040000060010020040004809500500000008">Ayato2003</a></li>
+						<li><a class="restart" href="?m=multi-objective-2&u=hoge&p=700000005004507300090080020050000060006000100070000080040050090007402600800000004">hoge</a></li>
+						<li><a class="restart" href="?m=multi-objective-2&u=penguin&p=900000002006105300010040050060000080004000600030000070020030040007901800500000001">penguin</a></li>
+						<li><a class="restart" href="?m=multi-objective-2&u=satori&p=200000004003807600090040050050000010002000400030000090020010070007605200900000006">satori</a></li>
+						<li><a class="restart" href="?m=multi-objective-2&u=SoraY677&p=500000006009301800040020090010000060006000200050000030080050040007806100300000002">SoraY677</a></li>
+						<li><a class="restart" href="?m=multi-objective-2&u=t-um&p=100000002003104500060070080080000010005000800090000030030010070007905400200000009">t-um</a></li>
+						<li><a class="restart" href="?m=multi-objective-2&u=XUYuefeng&p=600000003008201600010030070080000040009000800070000020040020030005906200200000005">XUYuefeng</a></li>
+						<li><a class="restart" href="?m=multi-objective-2&u=yukihanawa&p=100000002003401600060030010020000050007000800040000090030040020006308700500000009">yukihanawa</a></li>
+						<li><a class="restart" href="?m=multi-objective-2&u=YutaNakanishi&p=300000006008207900090030010040000080005000200010000090060080070002306500400000009">YutaNakanishi</a></li>
+					</ul>
+				</li>
+				<li>
+					<a class="restart" href="#" onClick="onClickRandom('multi-objective-3');">From multi-objective-3</a>
+					<ul id="multi-objective-3">
+						<li><a class="restart" href="?m=multi-objective-3&u=Ayato2003&p=000000000001203400050060070060000080002000300070000090010080060005301200000000000">Ayato2003</a></li>
+						<li><a class="restart" href="?m=multi-objective-3&u=hoge&p=000000000005703600010060020080000010003000900040000070050010080006509300000000000">hoge</a></li>
+						<li><a class="restart" href="?m=multi-objective-3&u=penguin&p=000000000005709100030040080070000040002000900040000020080030060009102700000000000">penguin</a></li>
+						<li><a class="restart" href="?m=multi-objective-3&u=satori&p=000000000001407900020030080050000020004000700080000090090020030005706400000000000">satori</a></li>
+						<li><a class="restart" href="?m=multi-objective-3&u=SoraY677&p=000000000001207800070090050050000060008000300090000040040050070002908100000000000">SoraY677</a></li>
+						<li><a class="restart" href="?m=multi-objective-3&u=t-um&p=000000000001203400050060070060000010003000200080000050070010060008409300000000000">t-um</a></li>
+						<li><a class="restart" href="?m=multi-objective-3&u=XUYuefeng&p=000000000008407300010050090030000010006000400090000080050090020004203600000000000">XUYuefeng</a></li>
+						<li><a class="restart" href="?m=multi-objective-3&u=yukihanawa&p=000000000001203400050060070080000040003000200060000090090050060007402100000000000">yukihanawa</a></li>
+						<li><a class="restart" href="?m=multi-objective-3&u=YutaNakanishi&p=000000000003106700040020090090000020008000100070000050050090070001703600000000000">YutaNakanishi</a></li>
+					</ul>
 				</li>
 			</ul>
-
-			<!--<button class="option-button">
-						  <span class="material-icons">pause</span>
-						  <span>Pause</span>
-					  </button>
-					  <button class="option-button">
-						  <span class="material-icons">done_all</span>
-						  <span>Check</span>
-					  </button>
-					  <button class="option-button">
-						  <span class="material-icons">help</span>
-						  <span>Hint</span>
-					  </button>
-					  <button class="option-button">
-						  <span class="material-icons">refresh</span>
-						  <span>Restart</span>
-					  </button>
-					  <button class="option-button">
-						  <span class="material-icons">flag</span>
-						  <span>Surrender</span>
-					  </button>
-				  -->
-		</div>
+		</ul>
 	</div>
 
-	<div class="footer vertical-adjust">
-		<span class="material-icons">code</span>
-		<span>with</span>
-		<span class="material-icons">favorite</span>
-		<span>by Mohammad Diab from</span>
-		<a href="#" onclick="showDialogClick('about-dialog');">#codeTeam6</a>
-		<span> . © 2018 all right reserved.</span>
-	</div>
+	<div id="sudoku_container"></div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="script.js"></script>
 </body>
 
