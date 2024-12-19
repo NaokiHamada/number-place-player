@@ -133,21 +133,22 @@ DEALINGS IN THE SOFTWARE.
 			<div class="dialog-header">New game</div>
 
 			<div class="dialog-body">
-				<p>Select game to get started.</p>
+				<p>Select puzzle to play.</p>
 				<ul>
 					<li class="radio-option">
-						<label for="any">
-							<input id="any" value="{match:null, user:null}" type="radio" name="difficulty"> any
+						<label>
+							<input id="all-matches" value="{match:null, user:null}" type="radio" name="difficulty"> Random from all matches
 						</label>
 					</li>
+
 					<li class="radio-option">
-						<label for="single-objective-1">
+						<label>
 							<input id="single-objective-1" value="{match:'single-objective-1', user:null}" type="radio"
-								name="difficulty"> single-objective-1
+								name="difficulty"> Random from single-objective-1
 						</label>
 						<ul>
 							<li class="radio-option">
-								<label for="single-objective-1_Ayato2003">
+								<label>
 									<input id="single-objective-1_Ayato2003"
 										value="{match:'single-objective-1', user:'Ayato2003'}" type="radio"
 										name="difficulty">
@@ -155,7 +156,15 @@ DEALINGS IN THE SOFTWARE.
 								</label>
 							</li>
 							<li class="radio-option">
-								<label for="single-objective-1_kushida">
+								<label>
+									<input id="single-objective-1_hoge"
+										value="{match:'single-objective-1', user:'hoge'}" type="radio"
+										name="difficulty">
+									hoge
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
 									<input id="single-objective-1_kushida"
 										value="{match:'single-objective-1', user:'kushida'}" type="radio"
 										name="difficulty">
@@ -163,7 +172,7 @@ DEALINGS IN THE SOFTWARE.
 								</label>
 							</li>
 							<li class="radio-option">
-								<label for="single-objective-1_penguin">
+								<label>
 									<input id="single-objective-1_penguin"
 										value="{match:'single-objective-1', user:'penguin'}" type="radio"
 										name="difficulty">
@@ -171,15 +180,7 @@ DEALINGS IN THE SOFTWARE.
 								</label>
 							</li>
 							<li class="radio-option">
-								<label for="single-objective-1_t-um">
-									<input id="single-objective-1_t-um"
-										value="{match:'single-objective-1', user:'t-um'}" type="radio"
-										name="difficulty">
-									t-um
-								</label>
-							</li>
-							<li class="radio-option">
-								<label for="single-objective-1_satori">
+								<label>
 									<input id="single-objective-1_satori"
 										value="{match:'single-objective-1', user:'satori'}" type="radio"
 										name="difficulty">
@@ -187,7 +188,47 @@ DEALINGS IN THE SOFTWARE.
 								</label>
 							</li>
 							<li class="radio-option">
-								<label for="single-objective-1_YutaNakanishi">
+								<label>
+									<input id="single-objective-1_SoraY677"
+										value="{match:'single-objective-1', user:'SoraY677'}" type="radio"
+										name="difficulty">
+									SoraY677
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="single-objective-1_t-um"
+										value="{match:'single-objective-1', user:'t-um'}" type="radio"
+										name="difficulty">
+									t-um
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="single-objective-1_XUYuefeng"
+										value="{match:'single-objective-1', user:'XUYuefeng'}" type="radio"
+										name="difficulty">
+									XUYuefeng
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="single-objective-1_yukichi"
+										value="{match:'single-objective-1', user:'yukichi'}" type="radio"
+										name="difficulty">
+									yukichi
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="single-objective-1_yukihanawa"
+										value="{match:'single-objective-1', user:'yukihanawa'}" type="radio"
+										name="difficulty">
+									yukihanawa
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
 									<input id="single-objective-1_YutaNakanishi"
 										value="{match:'single-objective-1', user:'YutaNakanishi'}" type="radio"
 										name="difficulty">
@@ -196,14 +237,15 @@ DEALINGS IN THE SOFTWARE.
 							</li>
 						</ul>
 					</li>
+
 					<li class="radio-option">
-						<label for="single-objective-2">
+						<label>
 							<input id="single-objective-2" value="{match:'single-objective-2', user:null}" type="radio"
-								name="difficulty"> single-objective-2
+								name="difficulty"> Random from single-objective-2
 						</label>
 						<ul>
 							<li class="radio-option">
-								<label for="single-objective-2_Ayato2003">
+								<label>
 									<input id="single-objective-2_Ayato2003"
 										value="{match:'single-objective-2', user:'Ayato2003'}" type="radio"
 										name="difficulty">
@@ -211,7 +253,15 @@ DEALINGS IN THE SOFTWARE.
 								</label>
 							</li>
 							<li class="radio-option">
-								<label for="single-objective-2_kushida">
+								<label>
+									<input id="single-objective-2_hoge"
+										value="{match:'single-objective-2', user:'hoge'}" type="radio"
+										name="difficulty">
+									hoge
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
 									<input id="single-objective-2_kushida"
 										value="{match:'single-objective-2', user:'kushida'}" type="radio"
 										name="difficulty">
@@ -219,7 +269,7 @@ DEALINGS IN THE SOFTWARE.
 								</label>
 							</li>
 							<li class="radio-option">
-								<label for="single-objective-2_penguin">
+								<label>
 									<input id="single-objective-2_penguin"
 										value="{match:'single-objective-2', user:'penguin'}" type="radio"
 										name="difficulty">
@@ -227,15 +277,7 @@ DEALINGS IN THE SOFTWARE.
 								</label>
 							</li>
 							<li class="radio-option">
-								<label for="single-objective-2_t-um">
-									<input id="single-objective-2_t-um"
-										value="{match:'single-objective-2', user:'t-um'}" type="radio"
-										name="difficulty">
-									t-um
-								</label>
-							</li>
-							<li class="radio-option">
-								<label for="single-objective-2_satori">
+								<label>
 									<input id="single-objective-2_satori"
 										value="{match:'single-objective-2', user:'satori'}" type="radio"
 										name="difficulty">
@@ -243,7 +285,47 @@ DEALINGS IN THE SOFTWARE.
 								</label>
 							</li>
 							<li class="radio-option">
-								<label for="single-objective-2_YutaNakanishi">
+								<label>
+									<input id="single-objective-2_SoraY677"
+										value="{match:'single-objective-2', user:'SoraY677'}" type="radio"
+										name="difficulty">
+									SoraY677
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="single-objective-2_t-um"
+										value="{match:'single-objective-2', user:'t-um'}" type="radio"
+										name="difficulty">
+									t-um
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="single-objective-2_XUYuefeng"
+										value="{match:'single-objective-2', user:'XUYuefeng'}" type="radio"
+										name="difficulty">
+									XUYuefeng
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="single-objective-2_yukichi"
+										value="{match:'single-objective-2', user:'yukichi'}" type="radio"
+										name="difficulty">
+									yukichi
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="single-objective-2_yukihanawa"
+										value="{match:'single-objective-2', user:'yukihanawa'}" type="radio"
+										name="difficulty">
+									yukihanawa
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
 									<input id="single-objective-2_YutaNakanishi"
 										value="{match:'single-objective-2', user:'YutaNakanishi'}" type="radio"
 										name="difficulty">
@@ -252,70 +334,347 @@ DEALINGS IN THE SOFTWARE.
 							</li>
 						</ul>
 					</li>
+
 					<li class="radio-option">
-						<label for="single-objective-3">
+						<label>
 							<input id="single-objective-3" value="{match:'single-objective-3', user:null}" type="radio"
-								name="difficulty"> single-objective-3
+								name="difficulty"> Random from single-objective-3
 						</label>
 						<ul>
 							<li class="radio-option">
-								<label for="single-objective-3_Ayato2003">
+								<label>
 									<input id="single-objective-3_Ayato2003"
 										value="{match:'single-objective-3', user:'Ayato2003'}" type="radio"
 										name="difficulty">
 									Ayato2003
 								</label>
 							</li>
+							<li class="radio-option">
+								<label>
+									<input id="single-objective-3_hoge"
+										value="{match:'single-objective-3', user:'hoge'}" type="radio"
+										name="difficulty">
+									hoge
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="single-objective-3_kushida"
+										value="{match:'single-objective-3', user:'kushida'}" type="radio"
+										name="difficulty">
+									kushida
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="single-objective-3_penguin"
+										value="{match:'single-objective-3', user:'penguin'}" type="radio"
+										name="difficulty">
+									penguin
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="single-objective-3_satori"
+										value="{match:'single-objective-3', user:'satori'}" type="radio"
+										name="difficulty">
+									satori
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="single-objective-3_SoraY677"
+										value="{match:'single-objective-3', user:'SoraY677'}" type="radio"
+										name="difficulty">
+									SoraY677
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="single-objective-3_t-um"
+										value="{match:'single-objective-3', user:'t-um'}" type="radio"
+										name="difficulty">
+									t-um
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="single-objective-3_XUYuefeng"
+										value="{match:'single-objective-3', user:'XUYuefeng'}" type="radio"
+										name="difficulty">
+									XUYuefeng
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="single-objective-3_yukichi"
+										value="{match:'single-objective-3', user:'yukichi'}" type="radio"
+										name="difficulty">
+									yukichi
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="single-objective-3_yukihanawa"
+										value="{match:'single-objective-3', user:'yukihanawa'}" type="radio"
+										name="difficulty">
+									yukihanawa
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="single-objective-3_YutaNakanishi"
+										value="{match:'single-objective-3', user:'YutaNakanishi'}" type="radio"
+										name="difficulty">
+									YutaNakanishi
+								</label>
+							</li>
 						</ul>
 					</li>
+
 					<li class="radio-option">
-						<label for="multi-objective-1">
+						<label>
 							<input id="multi-objective-1" value="{match:'multi-objective-1', user:null}" type="radio"
-								name="difficulty"> multi-objective-1
+								name="difficulty"> Random from multi-objective-1
 						</label>
 						<ul>
 							<li class="radio-option">
-								<label for="multi-objective-1_Ayato2003">
+								<label>
 									<input id="multi-objective-1_Ayato2003"
 										value="{match:'multi-objective-1', user:'Ayato2003'}" type="radio"
 										name="difficulty">
 									Ayato2003
 								</label>
 							</li>
+							<li class="radio-option">
+								<label>
+									<input id="multi-objective-1_hoge"
+										value="{match:'multi-objective-1', user:'hoge'}" type="radio"
+										name="difficulty">
+									hoge
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="multi-objective-1_penguin"
+										value="{match:'multi-objective-1', user:'penguin'}" type="radio"
+										name="difficulty">
+									penguin
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="multi-objective-1_satori"
+										value="{match:'multi-objective-1', user:'satori'}" type="radio"
+										name="difficulty">
+									satori
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="multi-objective-1_SoraY677"
+										value="{match:'multi-objective-1', user:'SoraY677'}" type="radio"
+										name="difficulty">
+									SoraY677
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="multi-objective-1_t-um"
+										value="{match:'multi-objective-1', user:'t-um'}" type="radio"
+										name="difficulty">
+									t-um
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="multi-objective-1_XUYuefeng"
+										value="{match:'multi-objective-1', user:'XUYuefeng'}" type="radio"
+										name="difficulty">
+									XUYuefeng
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="multi-objective-1_yukihanawa"
+										value="{match:'multi-objective-1', user:'yukihanawa'}" type="radio"
+										name="difficulty">
+									yukihanawa
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="multi-objective-1_YutaNakanishi"
+										value="{match:'multi-objective-1', user:'YutaNakanishi'}" type="radio"
+										name="difficulty">
+									YutaNakanishi
+								</label>
+							</li>
 						</ul>
 					</li>
+
 					<li class="radio-option">
-						<label for="multi-objective-2">
+						<label>
 							<input id="multi-objective-2" value="{match:'multi-objective-2', user:null}" type="radio"
-								name="difficulty"> multi-objective-2
+								name="difficulty"> Random from multi-objective-2
 						</label>
 						<ul>
 							<li class="radio-option">
-								<label for="multi-objective-2_Ayato2003">
+								<label>
 									<input id="multi-objective-2_Ayato2003"
 										value="{match:'multi-objective-2', user:'Ayato2003'}" type="radio"
 										name="difficulty">
 									Ayato2003
 								</label>
 							</li>
+							<li class="radio-option">
+								<label>
+									<input id="multi-objective-2_hoge"
+										value="{match:'multi-objective-2', user:'hoge'}" type="radio"
+										name="difficulty">
+									hoge
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="multi-objective-2_penguin"
+										value="{match:'multi-objective-2', user:'penguin'}" type="radio"
+										name="difficulty">
+									penguin
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="multi-objective-2_satori"
+										value="{match:'multi-objective-2', user:'satori'}" type="radio"
+										name="difficulty">
+									satori
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="multi-objective-2_SoraY677"
+										value="{match:'multi-objective-2', user:'SoraY677'}" type="radio"
+										name="difficulty">
+									SoraY677
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="multi-objective-2_t-um"
+										value="{match:'multi-objective-2', user:'t-um'}" type="radio"
+										name="difficulty">
+									t-um
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="multi-objective-2_XUYuefeng"
+										value="{match:'multi-objective-2', user:'XUYuefeng'}" type="radio"
+										name="difficulty">
+									XUYuefeng
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="multi-objective-2_yukihanawa"
+										value="{match:'multi-objective-2', user:'yukihanawa'}" type="radio"
+										name="difficulty">
+									yukihanawa
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="multi-objective-2_YutaNakanishi"
+										value="{match:'multi-objective-2', user:'YutaNakanishi'}" type="radio"
+										name="difficulty">
+									YutaNakanishi
+								</label>
+							</li>
 						</ul>
 					</li>
+
 					<li class="radio-option">
-						<label for="multi-objective-3">
+						<label>
 							<input id="multi-objective-3" value="{match:'multi-objective-3', user:null}" type="radio"
-								name="difficulty"> multi-objective-3
+								name="difficulty"> Random from multi-objective-3
 						</label>
 						<ul>
 							<li class="radio-option">
-								<label for="multi-objective-3_Ayato2003">
+								<label>
 									<input id="multi-objective-3_Ayato2003"
 										value="{match:'multi-objective-3', user:'Ayato2003'}" type="radio"
 										name="difficulty">
 									Ayato2003
 								</label>
 							</li>
+							<li class="radio-option">
+								<label>
+									<input id="multi-objective-3_hoge"
+										value="{match:'multi-objective-3', user:'hoge'}" type="radio"
+										name="difficulty">
+									hoge
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="multi-objective-3_penguin"
+										value="{match:'multi-objective-3', user:'penguin'}" type="radio"
+										name="difficulty">
+									penguin
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="multi-objective-3_satori"
+										value="{match:'multi-objective-3', user:'satori'}" type="radio"
+										name="difficulty">
+									satori
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="multi-objective-3_SoraY677"
+										value="{match:'multi-objective-3', user:'SoraY677'}" type="radio"
+										name="difficulty">
+									SoraY677
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="multi-objective-3_t-um"
+										value="{match:'multi-objective-3', user:'t-um'}" type="radio"
+										name="difficulty">
+									t-um
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="multi-objective-3_XUYuefeng"
+										value="{match:'multi-objective-3', user:'XUYuefeng'}" type="radio"
+										name="difficulty">
+									XUYuefeng
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="multi-objective-3_yukihanawa"
+										value="{match:'multi-objective-3', user:'yukihanawa'}" type="radio"
+										name="difficulty">
+									yukihanawa
+								</label>
+							</li>
+							<li class="radio-option">
+								<label>
+									<input id="multi-objective-3_YutaNakanishi"
+										value="{match:'multi-objective-3', user:'YutaNakanishi'}" type="radio"
+										name="difficulty">
+									YutaNakanishi
+								</label>
+							</li>
 						</ul>
 					</li>
+
 				</ul>
 			</div>
 
