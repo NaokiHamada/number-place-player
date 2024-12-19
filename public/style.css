@@ -49,6 +49,10 @@ body {
   ) repeat;
 }
 
+.voting {
+  margin: 0px 0px 0px 100px;
+}
+
 /* board */
 .sudoku_board {
   margin:6px auto;
